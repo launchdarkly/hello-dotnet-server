@@ -24,11 +24,11 @@ namespace HelloDotNet
       {
         if (task.Result)
         {
-          Console.WriteLine("Showing feature for user");
+          Console.WriteLine("Showing feature for user " + user.Key);
         }
         else
         {
-          Console.WriteLine("Not showing feature for user");
+          Console.WriteLine("Not showing feature for user " + user.Key);
         }
 
         client.Flush();
