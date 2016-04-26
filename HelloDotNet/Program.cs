@@ -8,37 +8,32 @@ using LaunchDarkly.Client;
 
 namespace HelloDotNet
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-      // TODO: Enter your LaunchDarkly API key here
-      LdClient client = new LdClient("YOUR_API_KEY");
-      User user = User.WithKey("bob@example.com")
-        .AndFirstName("Bob")
-        .AndLastName("Loblaw")
-        .AndCustomAttribute("groups", "beta_testers");
-
-      // TODO: Enter the key for your feature flag key here
-      var value = client.Toggle("YOUR_FEATURE_FLAG_KEY", user, false).ContinueWith((task) =>
-      {
-        if (task.Result)
+        static void Main(string[] args)
         {
-          Console.WriteLine("Showing feature for user " + user.Key);
+            // TODO: Enter your LaunchDarkly API key here
+            LdClient client = new LdClient("YOUR_API_KEY");
+            User user = User.WithKey("bob@example.com")
+              .AndFirstName("Bob")
+              .AndLastName("Loblaw")
+              .AndCustomAttribute("groups", "beta_testers");
+
+            // TODO: Enter the key for your feature flag key here
+            var value = client.Toggle("YOUR_FEATURE_FLAG_KEY", user, false);
+
+            if (value)
+            {
+                Console.WriteLine("Showing feature for user " + user.Key);
+            }
+            else
+            {
+                Console.WriteLine("Not showing feature for user " + user.Key);
+            }
+            client.Flush();
+
+            Console.WriteLine("Press any key to exit");
+            Console.ReadKey();
         }
-        else
-        {
-          Console.WriteLine("Not showing feature for user " + user.Key);
-        }
-
-        client.Flush();
-      });
-
-      value.Wait();
-
-      Console.WriteLine("Press any key to exit");
-      Console.ReadKey();
-
     }
-  }
 }
