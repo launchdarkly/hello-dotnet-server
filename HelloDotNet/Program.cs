@@ -12,15 +12,15 @@ namespace HelloDotNet
     {
         static void Main(string[] args)
         {
-            // TODO: Enter your LaunchDarkly API key here
-            LdClient client = new LdClient("YOUR_API_KEY");
+            // TODO: Enter your LaunchDarkly SDK key here
+            LdClient client = new LdClient("YOUR_SDK_KEY");
             User user = User.WithKey("bob@example.com")
               .AndFirstName("Bob")
               .AndLastName("Loblaw")
               .AndCustomAttribute("groups", "beta_testers");
 
             // TODO: Enter the key for your feature flag key here
-            var value = client.Toggle("YOUR_FEATURE_FLAG_KEY", user, false);
+            var value = client.BoolVariation("YOUR_FEATURE_FLAG_KEY", user, false);
 
             if (value)
             {
