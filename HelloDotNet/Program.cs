@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using LaunchDarkly.Client;
+using Microsoft.Extensions.Logging;
 
 namespace HelloDotNet
 {
@@ -12,8 +9,15 @@ namespace HelloDotNet
     {
         static void Main(string[] args)
         {
-            // TODO: Enter your LaunchDarkly SDK key here
-            LdClient client = new LdClient("YOUR_SDK_KEY");
+            LoggerFactory factory = new LoggerFactory();
+            factory.AddConsole();
+
+            Configuration ldConfig = LaunchDarkly.Client.Configuration
+                    // TODO: Enter your LaunchDarkly SDK key here
+                    .Default("YOUR_SDK_KEY")
+                    .WithLoggerFactory(factory);
+
+            LdClient client = new LdClient(ldConfig);
             User user = User.WithKey("bob@example.com")
               .AndFirstName("Bob")
               .AndLastName("Loblaw")
