@@ -10,8 +10,7 @@ namespace HelloDotNet
         static void Main(string[] args)
         {
             ILoggerFactory factory = new LoggerFactory()
-              .AddConsole(LogLevel.Debug)
-              .AddDebug();
+              .AddConsole(LogLevel.Debug);
 
             Configuration ldConfig = LaunchDarkly.Client.Configuration
                     // TODO: Enter your LaunchDarkly SDK key here
