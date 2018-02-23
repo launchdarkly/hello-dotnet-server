@@ -43,10 +43,10 @@
       <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
     <Reference Include="LaunchDarkly.Client, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.Client.4.0.0-beta5\lib\net45\LaunchDarkly.Client.dll</HintPath>
+      <HintPath>..\packages\LaunchDarkly.Client.4.0.0\lib\net45\LaunchDarkly.Client.dll</HintPath>
     </Reference>
     <Reference Include="LaunchDarkly.EventSource, Version=3.0.0.0, Culture=neutral, PublicKeyToken=18e8c36453e3060f, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.EventSource.3.0.0-beta2\lib\net45\LaunchDarkly.EventSource.dll</HintPath>
+      <HintPath>..\packages\LaunchDarkly.EventSource.3.0.0\lib\net45\LaunchDarkly.EventSource.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Configuration.1.1.1\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll</HintPath>
