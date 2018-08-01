@@ -42,11 +42,11 @@
     <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
-    <Reference Include="LaunchDarkly.Client, Version=5.1.1.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.Client.5.1.1\lib\net45\LaunchDarkly.Client.dll</HintPath>
+    <Reference Include="LaunchDarkly.Client, Version=5.2.1.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
+      <HintPath>..\packages\LaunchDarkly.Client.5.2.1\lib\net45\LaunchDarkly.Client.dll</HintPath>
     </Reference>
-    <Reference Include="LaunchDarkly.Common, Version=1.0.1.0, Culture=neutral, PublicKeyToken=45ef1738a929a7df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.Common.1.0.1\lib\net45\LaunchDarkly.Common.dll</HintPath>
+    <Reference Include="LaunchDarkly.Common.StrongName, Version=1.0.3.0, Culture=neutral, PublicKeyToken=45ef1738a929a7df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LaunchDarkly.Common.StrongName.1.0.3\lib\net45\LaunchDarkly.Common.StrongName.dll</HintPath>
     </Reference>
     <Reference Include="LaunchDarkly.EventSource, Version=3.1.1.0, Culture=neutral, PublicKeyToken=18e8c36453e3060f, processorArchitecture=MSIL">
       <HintPath>..\packages\LaunchDarkly.EventSource.3.1.1\lib\net45\LaunchDarkly.EventSource.dll</HintPath>
