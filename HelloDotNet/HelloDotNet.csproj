@@ -45,14 +45,14 @@
     <Reference Include="LaunchDarkly.Cache, Version=1.0.2.0, Culture=neutral, PublicKeyToken=caeed01e3c7cd028, processorArchitecture=MSIL">
       <HintPath>..\packages\LaunchDarkly.Cache.1.0.2\lib\net45\LaunchDarkly.Cache.dll</HintPath>
     </Reference>
-    <Reference Include="LaunchDarkly.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.Client.5.6.2\lib\net45\LaunchDarkly.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="LaunchDarkly.Common.StrongName, Version=2.0.0.0, Culture=neutral, PublicKeyToken=45ef1738a929a7df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.Common.StrongName.2.0.0\lib\net45\LaunchDarkly.Common.StrongName.dll</HintPath>
+    <Reference Include="LaunchDarkly.CommonSdk.StrongName, Version=2.1.2.0, Culture=neutral, PublicKeyToken=45ef1738a929a7df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LaunchDarkly.CommonSdk.StrongName.2.1.2\lib\net45\LaunchDarkly.CommonSdk.StrongName.dll</HintPath>
     </Reference>
     <Reference Include="LaunchDarkly.EventSource, Version=3.3.0.0, Culture=neutral, PublicKeyToken=18e8c36453e3060f, processorArchitecture=MSIL">
       <HintPath>..\packages\LaunchDarkly.EventSource.3.3.0\lib\net45\LaunchDarkly.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="LaunchDarkly.ServerSdk, Version=5.6.4.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
+      <HintPath>..\packages\LaunchDarkly.ServerSdk.5.6.4\lib\net45\LaunchDarkly.ServerSdk.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
