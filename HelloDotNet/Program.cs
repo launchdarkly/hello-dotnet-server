@@ -21,10 +21,11 @@ namespace HelloDotNet
                     .Default("YOUR_SDK_KEY");
 
             LdClient client = new LdClient(ldConfig);
-            User user = User.WithKey("bob@example.com")
-              .AndFirstName("Bob")
-              .AndLastName("Loblaw")
-              .AndCustomAttribute("groups", "beta_testers");
+            User user = User.Builder("bob@example.com")
+              .FirstName("Bob")
+              .LastName("Loblaw")
+              .Custom("groups", "beta_testers")
+              .Build();
 
             // TODO: Enter the key for your feature flag key here
             var value = client.BoolVariation("YOUR_FEATURE_FLAG_KEY", user, false);
