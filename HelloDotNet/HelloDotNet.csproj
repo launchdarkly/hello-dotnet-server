@@ -51,8 +51,8 @@
     <Reference Include="LaunchDarkly.EventSource, Version=3.3.0.0, Culture=neutral, PublicKeyToken=18e8c36453e3060f, processorArchitecture=MSIL">
       <HintPath>..\packages\LaunchDarkly.EventSource.3.3.0\lib\net45\LaunchDarkly.EventSource.dll</HintPath>
     </Reference>
-    <Reference Include="LaunchDarkly.ServerSdk, Version=5.7.1.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.ServerSdk.5.7.1\lib\net45\LaunchDarkly.ServerSdk.dll</HintPath>
+    <Reference Include="LaunchDarkly.ServerSdk, Version=5.8.0.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
+      <HintPath>..\packages\LaunchDarkly.ServerSdk.5.8.0\lib\net45\LaunchDarkly.ServerSdk.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
