@@ -45,20 +45,23 @@
     <Reference Include="LaunchDarkly.Cache, Version=1.0.2.0, Culture=neutral, PublicKeyToken=caeed01e3c7cd028, processorArchitecture=MSIL">
       <HintPath>..\packages\LaunchDarkly.Cache.1.0.2\lib\net45\LaunchDarkly.Cache.dll</HintPath>
     </Reference>
-    <Reference Include="LaunchDarkly.CommonSdk.StrongName, Version=2.6.1.0, Culture=neutral, PublicKeyToken=45ef1738a929a7df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.CommonSdk.StrongName.2.6.1\lib\net45\LaunchDarkly.CommonSdk.StrongName.dll</HintPath>
+    <Reference Include="LaunchDarkly.CommonSdk.StrongName, Version=2.11.0.0, Culture=neutral, PublicKeyToken=45ef1738a929a7df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LaunchDarkly.CommonSdk.StrongName.2.11.0\lib\net45\LaunchDarkly.CommonSdk.StrongName.dll</HintPath>
     </Reference>
     <Reference Include="LaunchDarkly.EventSource, Version=3.3.0.0, Culture=neutral, PublicKeyToken=18e8c36453e3060f, processorArchitecture=MSIL">
       <HintPath>..\packages\LaunchDarkly.EventSource.3.3.0\lib\net45\LaunchDarkly.EventSource.dll</HintPath>
     </Reference>
-    <Reference Include="LaunchDarkly.ServerSdk, Version=5.8.0.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
-      <HintPath>..\packages\LaunchDarkly.ServerSdk.5.8.0\lib\net45\LaunchDarkly.ServerSdk.dll</HintPath>
+    <Reference Include="LaunchDarkly.ServerSdk, Version=5.13.0.0, Culture=neutral, PublicKeyToken=f86add69004e6885, processorArchitecture=MSIL">
+      <HintPath>..\packages\LaunchDarkly.ServerSdk.5.13.0\lib\net45\LaunchDarkly.ServerSdk.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -92,6 +95,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parameters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

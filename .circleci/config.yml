@@ -1,0 +1,39 @@
+version: 2.1
+
+orbs:
+   win: circleci/windows@1.0.0
+
+workflows:
+  test:
+    jobs:
+      - build-run-windows
+
+# This CI build ensures that the demo both compiles and works correctly. For the runtime test,
+# we use an SDK key and flag key that are passed in via the CircleCI project configuration;
+# the flag is configured to return a true value.
+
+jobs:
+  build-windows:
+    executor:
+      name: win/vs2019
+      shell: powershell.exe
+    steps:
+      - checkout
+      - run:
+          name: insert SDK key and flag key into demo code
+          command: |
+            $content = Get-Content -Path .\HelloDotnet\Parameters.cs
+            $content = $content -Replace "SdkKey = `".*`"","SdkKey = `"$env:LD_DEMO_SDK_KEY`""
+            $content = $content -Replace "FeatureFlagKey = `".*`"","FeatureFlagKey = `"$env:LD_DEMO_FLAG_KEY`""
+            $content | Set-Content -Path .\HelloDotnet\Parameters.cs
+      - run:
+          name: build demo
+          command: dotnet build
+      - run:
+          name: run demo
+          command: |
+            Start-Transcript -Path .\output.txt -UseMinimalHeader
+            .\HelloDotNet\bin\Debug\HelloDotnet
+            Stop-Transcript
+            $output = Get-Content -Path .\output.txt
+            if (-Not $output.Contains("is True for this user")) { exit 1 }
