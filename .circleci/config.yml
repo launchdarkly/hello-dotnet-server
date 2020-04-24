@@ -13,7 +13,7 @@ workflows:
 # the flag is configured to return a true value.
 
 jobs:
-  build-windows:
+  build-run-windows:
     executor:
       name: win/vs2019
       shell: powershell.exe
