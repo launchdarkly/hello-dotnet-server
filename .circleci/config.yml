@@ -28,7 +28,7 @@ jobs:
             $content | Set-Content -Path .\HelloDotnet\Parameters.cs
       - run:
           name: build demo
-          command: dotnet build
+          command: dotnet build HelloDotnet.sln
       - run:
           name: run demo
           command: |
