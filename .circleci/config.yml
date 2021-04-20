@@ -65,7 +65,7 @@ jobs:
       - run:
           name: run demo
           command: |
-            .\HelloDotNet\bin\Debug\HelloDotnet | tee-object -variable output
+            dotnet run --project HelloDotNet | tee-object -variable output
             if ( "$output" -notlike "*is True for this user*" )
             {
               write-output "Flag did not evaluate to expected true value"
