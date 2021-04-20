@@ -13,12 +13,12 @@ This is a .NET Core application that can be built on any platform where .NET is 
 2. Edit `HelloDotNet/Hello.cs` and set the value of `SdkKey` to your LaunchDarkly SDK key. If there is an existing boolean feature flag in your LaunchDarkly project that you want to evaluate, set `FeatureFlagKey` to the flag key.
 
 ```csharp
-    public const String SdkKey = "1234567890abcdef";
+    public const string SdkKey = "1234567890abcdef";
 
-    public const String FeatureFlagKey = "my-flag";
+    public const string FeatureFlagKey = "my-flag";
 ```
 
-3. If you are using Visual Studio, open `HelloDotNet.sln` and run the application. Or, to run from the command line, type the following commands:
+3. If you are using Visual Studio, open `HelloDotNet.sln` and run the application. Or, to run from the command line, type the following command:
 
 ```
     dotnet run --project HelloDotNet
