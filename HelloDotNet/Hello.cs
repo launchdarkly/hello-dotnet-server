@@ -20,7 +20,7 @@ namespace HelloDotNet
 
         static void Main(string[] args)
         {
-            if (SdkKey == "")
+            if (string.IsNullOrEmpty(SdkKey))
             {
                 ShowMessage("Please edit Hello.cs to set SdkKey to your LaunchDarkly SDK key first");
                 Environment.Exit(1);
