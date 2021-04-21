@@ -8,9 +8,7 @@ Below, you'll find the basic build procedure, but for more comprehensive instruc
 
 This is a .NET Core application that can be built on any platform where .NET is available. It can be run either in Visual Studio, or from the command line if you have installed the .NET command-line tools.
 
-1. To ensure that you are using the latest version of the SDK, run `dotnet add HelloDotNet package LaunchDarkly.ServerSdk` (or use "Manage NuGet Packages" in Visual Studio to update the `LaunchDarkly.ServerSdk` package).
-
-2. Edit `HelloDotNet/Hello.cs` and set the value of `SdkKey` to your LaunchDarkly SDK key. If there is an existing boolean feature flag in your LaunchDarkly project that you want to evaluate, set `FeatureFlagKey` to the flag key.
+1. Edit `HelloDotNet/Hello.cs` and set the value of `SdkKey` to your LaunchDarkly SDK key. If there is an existing boolean feature flag in your LaunchDarkly project that you want to evaluate, set `FeatureFlagKey` to the flag key.
 
 ```csharp
     public const string SdkKey = "1234567890abcdef";
@@ -18,7 +16,7 @@ This is a .NET Core application that can be built on any platform where .NET is 
     public const string FeatureFlagKey = "my-flag";
 ```
 
-3. If you are using Visual Studio, open `HelloDotNet.sln` and run the application. Or, to run from the command line, type the following command:
+2. If you are using Visual Studio, open `HelloDotNet.sln` and run the application. Or, to run from the command line, type the following command:
 
 ```
     dotnet run --project HelloDotNet

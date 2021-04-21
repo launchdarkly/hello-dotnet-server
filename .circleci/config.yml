@@ -40,9 +40,6 @@ jobs:
             sed -i.bak "s/SdkKey *= *\".*\"/SdkKey = \"${LD_HELLO_WORLD_SDK_KEY}\"/" ./HelloDotNet/Hello.cs
             sed -i.bak "s/FeatureFlagKey *= *\".*\"/FeatureFlagKey = \"${LD_HELLO_WORLD_FLAG_KEY_WITH_TRUE_VALUE}\"/" ./HelloDotNet/Hello.cs
       - run:
-          name: get latest SDK version
-          command: dotnet add HelloDotNet package LaunchDarkly.ServerSdk
-      - run:
           name: build demo
           command: dotnet build
       - run:
@@ -64,9 +61,6 @@ jobs:
             $content = $content -Replace "SdkKey = `".*`"","SdkKey = `"$env:LD_HELLO_WORLD_SDK_KEY`""
             $content = $content -Replace "FeatureFlagKey = `".*`"","FeatureFlagKey = `"$env:LD_HELLO_WORLD_FLAG_KEY_WITH_TRUE_VALUE`""
             $content | Set-Content -Path .\HelloDotNet\Hello.cs
-      - run:
-          name: get latest SDK version
-          command: dotnet add HelloDotNet package LaunchDarkly.ServerSdk
       - run:
           name: build demo
           command: dotnet build HelloDotNet.sln
