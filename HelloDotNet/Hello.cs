@@ -25,10 +25,9 @@ namespace HelloDotNet
                 Environment.Exit(1);
             }
 
-            Configuration ldConfig = LaunchDarkly.Client.Configuration
-                .Default(SdkKey);
+            var ldConfig = Configuration.Default(SdkKey);
 
-            LdClient client = new LdClient(ldConfig);
+            var client = new LdClient(ldConfig);
 
             if (client.Initialized())
             {
@@ -42,7 +41,7 @@ namespace HelloDotNet
 
             // Set up the user properties. This user should appear on your LaunchDarkly users dashboard
             // soon after you run the demo.
-            User user = User.Builder("example-user-key")
+            var user = User.Builder("example-user-key")
                 .Name("Sandy")
                 .Build();
 
