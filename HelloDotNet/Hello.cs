@@ -1,7 +1,6 @@
 ﻿using System;
-using Common.Logging;
-using LaunchDarkly.Client;
-using LaunchDarkly.Logging;
+using LaunchDarkly.Sdk;
+using LaunchDarkly.Sdk.Server;
 
 namespace HelloDotNet
 {
@@ -25,10 +24,6 @@ namespace HelloDotNet
                 ShowMessage("Please edit Hello.cs to set SdkKey to your LaunchDarkly SDK key first");
                 Environment.Exit(1);
             }
-
-            LogManager.Adapter = new ConsoleAdapter(LogLevel.Info);
-            // ConsoleAdapter is a simple Common.Logging implementation that's provided by LaunchDarkly;
-            // Common.Logging has an equivalent class, but not on every platform
 
             Configuration ldConfig = LaunchDarkly.Client.Configuration
                 .Default(SdkKey);
