@@ -29,7 +29,7 @@ namespace HelloDotNet
 
             var client = new LdClient(ldConfig);
 
-            if (client.Initialized())
+            if (client.Initialized)
             {
                 ShowMessage("SDK successfully initialized!");
             }
