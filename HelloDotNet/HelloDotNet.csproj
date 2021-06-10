@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="6.0.0-rc.3" />
+    <!-- This dependency deliberately refers to 6.* rather than a specific
+         version, to ensure that the hello-dotnet demo always uses the latest
+         public release of the SDK. -->
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="6.*" />
   </ItemGroup>
 </Project>
