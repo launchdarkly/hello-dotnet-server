@@ -31,9 +31,10 @@ namespace HelloDotNet
             // Common.Logging has an equivalent class, but not on every platform
 
             Configuration ldConfig = LaunchDarkly.Client.Configuration.Builder(SdkKey)
-                .ServiceEndpoints(Components.ServiceEndpoints()
-                    .Streaming("https://stream-tls10.launchdarkly.com")
-                    .Events("https://events-tls10.launchdarkly.com"))
+                .DataSource(Components.StreamingDataSource()
+                    .BaseUri("https://stream-tls10.launchdarkly.com")
+                    .Build())
+                .Events(Components.SendEvents().BaseUri("https://events-tls10.launchdarkly.com"))
                 .Build();
 
             LdClient client = new LdClient(ldConfig);
