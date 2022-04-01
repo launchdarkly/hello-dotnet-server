@@ -30,8 +30,11 @@ namespace HelloDotNet
             // ConsoleAdapter is a simple Common.Logging implementation that's provided by LaunchDarkly;
             // Common.Logging has an equivalent class, but not on every platform
 
-            Configuration ldConfig = LaunchDarkly.Client.Configuration
-                .Default(SdkKey);
+            Configuration ldConfig = LaunchDarkly.Client.Configuration.Builder(SdkKey)
+                .ServiceEndpoints(Components.ServiceEndpoints()
+                    .Streaming("https://stream-tls10.launchdarkly.com")
+                    .Events("https://events-tls10.launchdarkly.com"))
+                .Build();
 
             LdClient client = new LdClient(ldConfig);
 
