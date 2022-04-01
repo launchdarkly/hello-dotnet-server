@@ -32,8 +32,7 @@ namespace HelloDotNet
 
             Configuration ldConfig = LaunchDarkly.Client.Configuration.Builder(SdkKey)
                 .DataSource(Components.StreamingDataSource()
-                    .BaseUri(new Uri("https://stream-tls10.launchdarkly.com"))
-                    .Build())
+                    .BaseUri(new Uri("https://stream-tls10.launchdarkly.com")))
                 .Events(Components.SendEvents().BaseUri(new Uri("https://events-tls10.launchdarkly.com")))
                 .Build();
 
