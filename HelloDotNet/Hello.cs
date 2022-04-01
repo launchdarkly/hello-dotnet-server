@@ -25,7 +25,11 @@ namespace HelloDotNet
                 Environment.Exit(1);
             }
 
-            var ldConfig = Configuration.Default(SdkKey);
+            var ldConfig = LaunchDarkly.Sdk.Server.Configuration.Builder(SdkKey)
+                .ServiceEndpoints(Components.ServiceEndpoints()
+                    .Streaming("https://stream-tls10.launchdarkly.com")
+                    .Events("https://events-tls10.launchdarkly.com"))
+                .Build();
 
             var client = new LdClient(ldConfig);
 
