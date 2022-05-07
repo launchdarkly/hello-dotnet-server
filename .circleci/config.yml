@@ -17,7 +17,7 @@ workflows:
         cron: "0 6 * * *"
         filters:
           branches:
-            only: master
+            only: main
     jobs:
     - build-run-linux:
         context: hello-world-demos
