@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- This dependency deliberately refers to 6.* rather than a specific
          version, to ensure that the hello-dotnet demo always uses the latest
          public release of the SDK. -->
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="6.*" />
+         <!-- TEMPORARY: using 7.0.0 prerelease, change this to 7.* after release -->
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="7.0.0-alpha.4" />
   </ItemGroup>
 </Project>
