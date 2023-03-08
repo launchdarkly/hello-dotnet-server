@@ -1,16 +1,17 @@
 ﻿using System;
 using LaunchDarkly.Sdk;
 using LaunchDarkly.Sdk.Server;
+using LaunchDarkly.Sdk.Server.Integrations;
 
 namespace HelloDotNet
 {
     class Hello
     {
         // Set SdkKey to your LaunchDarkly SDK key.
-        public const string SdkKey = "";
+        public const string SdkKey = "your sdk key";
 
         // Set FeatureFlagKey to the feature flag key you want to evaluate.
-        public const string FeatureFlagKey = "my-boolean-flag";
+        public const string FeatureFlagKey = "int-flag";
 
         private static void ShowMessage(string s) {
             Console.WriteLine("*** " + s);
@@ -25,7 +26,17 @@ namespace HelloDotNet
                 Environment.Exit(1);
             }
 
-            var ldConfig = Configuration.Default(SdkKey);
+            var ldConfig = Configuration.Builder(SdkKey)
+            .BigSegments(
+                Components.BigSegments(
+                    Redis.BigSegmentStore()
+                    .RedisConfiguration(new StackExchange.Redis.ConfigurationOptions{
+                        AbortOnConnectFail = false
+                    })
+                    .HostAndPort("localhost", 6379)
+                    .Prefix("pre"))
+            )
+            .Build();
 
             var client = new LdClient(ldConfig);
 
@@ -41,11 +52,11 @@ namespace HelloDotNet
 
             // Set up the evaluation context. This context should appear on your LaunchDarkly contexts
             // dashboard soon after you run the demo.
-            var context = Context.Builder("example-user-key")
-                .Name("Sandy")
+            var context = Context.Builder("toast")
+                .Name("Toaster")
                 .Build();
 
-            var flagValue = client.BoolVariation(FeatureFlagKey, context, false);
+            var flagValue = client.IntVariation(FeatureFlagKey, context, 777);
 
             ShowMessage(string.Format("Feature flag '{0}' is {1} for this context",
                 FeatureFlagKey, flagValue));
