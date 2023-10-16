@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- This dependency deliberately refers to 7.* rather than a specific
+    <!-- This dependency deliberately refers to 8.* rather than a specific
          version, to ensure that the hello-dotnet demo always uses the latest
          public release of the SDK. -->
-    <PackageReference Include="LaunchDarkly.ServerSdk" Version="7*" />
+    <PackageReference Include="LaunchDarkly.ServerSdk" Version="8.*" />
   </ItemGroup>
 </Project>
