@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using LaunchDarkly.Sdk;
 using LaunchDarkly.Sdk.Server;
 
@@ -6,22 +7,33 @@ namespace HelloDotNet
 {
     class Hello
     {
-        // Set SdkKey to your LaunchDarkly SDK key.
-        public const string SdkKey = "";
-
-        // Set FeatureFlagKey to the feature flag key you want to evaluate.
-        public const string FeatureFlagKey = "my-boolean-flag";
-
-        private static void ShowMessage(string s) {
-            Console.WriteLine("*** " + s);
-            Console.WriteLine();
+        public static void ShowBanner(){
+            Console.WriteLine(
+@"        ██
+          ██
+      ████████
+         ███████
+██ LAUNCHDARKLY █
+         ███████
+      ████████
+          ██
+        ██
+");
         }
 
         static void Main(string[] args)
         {
+            bool CI = Environment.GetEnvironmentVariable("CI") != null;
+
+            // Set SdkKey to your LaunchDarkly SDK key.
+            string SdkKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_SERVER_KEY");
+
+            // Set FeatureFlagKey to the feature flag key you want to evaluate.
+            string FeatureFlagKey = "sample-feature";
+
             if (string.IsNullOrEmpty(SdkKey))
             {
-                ShowMessage("Please edit Hello.cs to set SdkKey to your LaunchDarkly SDK key first");
+                Console.WriteLine("*** Please set LAUNCHDARKLY_SERVER_KEY environment variable to your LaunchDarkly SDK key first\n");
                 Environment.Exit(1);
             }
 
@@ -31,11 +43,11 @@ namespace HelloDotNet
 
             if (client.Initialized)
             {
-                ShowMessage("SDK successfully initialized!");
+                Console.WriteLine("*** SDK successfully initialized!\n");
             }
             else
             {
-                ShowMessage("SDK failed to initialize");
+                Console.WriteLine("*** SDK failed to initialize\n");
                 Environment.Exit(1);
             }
 
@@ -45,17 +57,38 @@ namespace HelloDotNet
                 .Name("Sandy")
                 .Build();
 
+            if (Environment.GetEnvironmentVariable("LAUNCHDARKLY_FLAG_KEY") != null)
+            {
+                FeatureFlagKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_FLAG_KEY");
+            }
+
             var flagValue = client.BoolVariation(FeatureFlagKey, context, false);
 
-            ShowMessage(string.Format("Feature flag '{0}' is {1} for this context",
+            Console.WriteLine(string.Format("*** The {0} feature flag evaluates to {1}.\n",
                 FeatureFlagKey, flagValue));
 
-            // Here we ensure that the SDK shuts down cleanly and has a chance to deliver analytics
-            // events to LaunchDarkly before the program exits. If analytics events are not delivered,
-            // the context attributes and flag usage statistics will not appear on your dashboard. In
-            // a normal long-running application, the SDK would continue running and events would be
-            // delivered automatically in the background.
-            client.Dispose();
+            if (flagValue)
+            {
+                ShowBanner();
+            }
+
+            client.FlagTracker.FlagChanged += client.FlagTracker.FlagValueChangeHandler(
+                FeatureFlagKey,
+                context,
+                (sender, changeArgs) => {
+                    Console.WriteLine(string.Format("*** The {0} feature flag evaluates to {1}.\n",
+                    FeatureFlagKey, changeArgs.NewValue));
+
+                    if (changeArgs.NewValue.AsBool) ShowBanner();
+                }
+            );
+
+            if(CI) Environment.Exit(0);
+
+            Console.WriteLine("*** Waiting for changes \n");
+
+            Task waitForever = new Task(() => {});
+            waitForever.Wait();
         }
     }
 }
