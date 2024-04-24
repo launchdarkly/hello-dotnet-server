@@ -7,32 +7,33 @@ namespace HelloDotNet
 {
     class Hello
     {
-        public static bool CI = Environment.GetEnvironmentVariable("CI") != null;
-
-        // Set SdkKey to your LaunchDarkly SDK key.
-        public static string SdkKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_SERVER_KEY");
-
-        // Set FeatureFlagKey to the feature flag key you want to evaluate.
-        public static string FeatureFlagKey = "sample-feature";
-
         public static void ShowBanner(){
             Console.WriteLine(
-                "\n        ██       \n" +
-                "          ██     \n" +
-                "      ████████   \n" +
-                "         ███████ \n" +
-                "██ LAUNCHDARKLY █\n" +
-                "         ███████ \n" +
-                "      ████████   \n" +
-                "          ██     \n" +
-                "        ██       \n");
+@"        ██
+          ██
+      ████████
+         ███████
+██ LAUNCHDARKLY █
+         ███████
+      ████████
+          ██
+        ██
+");
         }
 
         static void Main(string[] args)
         {
+            bool CI = Environment.GetEnvironmentVariable("CI") != null;
+
+            // Set SdkKey to your LaunchDarkly SDK key.
+            string SdkKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_SERVER_KEY");
+
+            // Set FeatureFlagKey to the feature flag key you want to evaluate.
+            string FeatureFlagKey = "sample-feature";
+
             if (string.IsNullOrEmpty(SdkKey))
             {
-                Console.WriteLine("*** Please edit Hello.cs to set SdkKey to your LaunchDarkly SDK key first\n");
+                Console.WriteLine("*** Please set LAUNCHDARKLY_SERVER_KEY environment variable to your LaunchDarkly SDK key first\n");
                 Environment.Exit(1);
             }
 
@@ -56,7 +57,8 @@ namespace HelloDotNet
                 .Name("Sandy")
                 .Build();
 
-            if (Environment.GetEnvironmentVariable("LAUNCHDARKLY_FLAG_KEY") != null) {
+            if (Environment.GetEnvironmentVariable("LAUNCHDARKLY_FLAG_KEY") != null)
+            {
                 FeatureFlagKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_FLAG_KEY");
             }
 
@@ -65,7 +67,10 @@ namespace HelloDotNet
             Console.WriteLine(string.Format("*** The {0} feature flag evaluates to {1}.\n",
                 FeatureFlagKey, flagValue));
 
-            if (flagValue) ShowBanner();
+            if (flagValue)
+            {
+                ShowBanner();
+            }
 
             client.FlagTracker.FlagChanged += client.FlagTracker.FlagValueChangeHandler(
                 FeatureFlagKey,
