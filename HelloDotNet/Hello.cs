@@ -25,15 +25,14 @@ namespace HelloDotNet
         {
             bool CI = Environment.GetEnvironmentVariable("CI") != null;
 
-            // Set SdkKey to your LaunchDarkly SDK key.
-            string SdkKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_SERVER_KEY");
+            string SdkKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_SDK_KEY");
 
             // Set FeatureFlagKey to the feature flag key you want to evaluate.
             string FeatureFlagKey = "sample-feature";
 
             if (string.IsNullOrEmpty(SdkKey))
             {
-                Console.WriteLine("*** Please set LAUNCHDARKLY_SERVER_KEY environment variable to your LaunchDarkly SDK key first\n");
+                Console.WriteLine("*** Please set LAUNCHDARKLY_SDK_KEY environment variable to your LaunchDarkly SDK key first\n");
                 Environment.Exit(1);
             }
 
