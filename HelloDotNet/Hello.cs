@@ -63,8 +63,7 @@ namespace HelloDotNet
 
             var flagValue = client.BoolVariation(FeatureFlagKey, context, false);
 
-            Console.WriteLine(string.Format("*** The {0} feature flag evaluates to {1}.\n",
-                FeatureFlagKey, flagValue));
+            Console.WriteLine($"*** The {FeatureFlagKey} feature flag evaluates to {flagValue}.\n");
 
             if (flagValue)
             {
@@ -75,8 +74,7 @@ namespace HelloDotNet
                 FeatureFlagKey,
                 context,
                 (sender, changeArgs) => {
-                    Console.WriteLine(string.Format("*** The {0} feature flag evaluates to {1}.\n",
-                    FeatureFlagKey, changeArgs.NewValue));
+                    Console.WriteLine($"*** The {FeatureFlagKey} feature flag evaluates to {changeArgs.NewValue}.\n");
 
                     if (changeArgs.NewValue.AsBool) ShowBanner();
                 }
