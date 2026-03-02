@@ -1,10 +1,31 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using LaunchDarkly.Sdk;
 using LaunchDarkly.Sdk.Server;
+using LaunchDarkly.Sdk.Server.Integrations;
 
 namespace HelloDotNet
 {
+    /// <summary>
+    /// A delegating handler that sets the HTTP version to 2.0 on all outgoing requests.
+    /// This can be used with the LaunchDarkly SDK's HttpConfigurationBuilder.MessageHandler()
+    /// to force all SDK HTTP traffic to use HTTP/2.
+    /// </summary>
+    class Http2Handler : DelegatingHandler
+    {
+        public Http2Handler(HttpMessageHandler innerHandler) : base(innerHandler) { }
+
+        protected override Task<HttpResponseMessage> SendAsync(
+            HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            request.Version = HttpVersion.Version20;
+            return base.SendAsync(request, cancellationToken);
+        }
+    }
+
     class Hello
     {
         public static void ShowBanner(){
@@ -36,7 +57,16 @@ namespace HelloDotNet
                 Environment.Exit(1);
             }
 
-            var ldConfig = Configuration.Default(SdkKey);
+            // Configure the SDK to use HTTP/2 by providing a custom message handler
+            // that sets the HTTP version on every outgoing request.
+            var handler = new Http2Handler(new SocketsHttpHandler());
+
+            var ldConfig = Configuration.Builder(SdkKey)
+                .Http(
+                    Components.HttpConfiguration()
+                        .MessageHandler(handler)
+                )
+                .Build();
 
             var client = new LdClient(ldConfig);
 
