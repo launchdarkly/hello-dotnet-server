@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **These examples have moved.** The server-side .NET SDK examples now live in the [examples-dotnet repository](https://github.com/launchdarkly/examples-dotnet). This repository remains to support legacy references.
+
 # LaunchDarkly sample .NET application
 
 We've built a simple console application that demonstrates how LaunchDarkly's SDK works.
